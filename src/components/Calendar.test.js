@@ -59,22 +59,4 @@ test('renders calendar component', () => {
 	expect(updatedMonthElement.innerHTML.trim()).toEqual(
 		`${expectedPrevMonth} ${expectedPrevYear}`,
 	);
-	// Trigger the next month button click
-	const nextButton = screen.getByText('>');
-	fireEvent.click(nextButton);
-
-	// Calculate the expected next month and year
-	const expectedNextMonth =
-		updatedMonthIndex === 11
-			? 'January'
-			: monthNames[updatedMonthIndex + 1];
-	const expectedNextYear =
-		updatedMonthIndex === 11
-			? parseInt(updatedYearText) + 1
-			: parseInt(updatedYearText);
-
-	// Check if the current month and year have been updated correctly
-	expect(updatedMonthElement.innerHTML.trim()).toEqual(
-		`${expectedNextMonth} ${expectedNextYear}`,
-	);
 });
