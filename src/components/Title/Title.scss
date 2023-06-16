@@ -1,0 +1,22 @@
+.calendar-title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.chevron {
+	cursor: pointer;
+	width: 40px;
+	display: inline-block;
+	margin: 0 20px;
+	font-size: 25px;
+	font-weight: 500;
+	transition: all 0.4s ease;
+}
+
+.chevron:hover {
+	font-weight: 600;
+	border-radius: 100%;
+	transform: scale(1.15);
+	background-color: rgba(128, 128, 128, 0.164);
+}

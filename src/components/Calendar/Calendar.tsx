@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './Calendar.scss';
 import Cell from '../Cell/Cell';
+import Title from '../Title/Title';
 
 const Calendar = () => {
 	const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -42,7 +43,7 @@ const Calendar = () => {
 	const emptyCells = [];
 
 	for (let i = 0; i < firstDayOfWeek; i++) {
-		emptyCells.push(<div key={`empty-${i}`}></div>);
+		emptyCells.push(<div key={i}></div>);
 	}
 
 	const days = [];
@@ -65,15 +66,12 @@ const Calendar = () => {
 
 	return (
 		<div>
-			<div className='calendar-title'>
-				<div className='chevron' onClick={handlePrevMonth}>
-					&lt;
-				</div>
-				<h2>{`${month} ${year}`}</h2>
-				<div className='chevron' onClick={handleNextMonth}>
-					&gt;
-				</div>
-			</div>
+			<Title
+				month={month}
+				year={year}
+				handlePrevMonth={handlePrevMonth}
+				handleNextMonth={handleNextMonth}
+			/>
 			<div className='calendar'>
 				<div className='calendar-header'>
 					{dayNames.map((day) => (
