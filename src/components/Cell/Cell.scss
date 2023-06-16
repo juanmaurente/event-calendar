@@ -1,0 +1,12 @@
+.calendar-cell {
+	padding: 20px;
+	text-align: center;
+}
+
+.calendar-cell:hover {
+	cursor: pointer;
+	transition: all 0.4s ease;
+	transform: scale(1.15);
+	font-weight: 500;
+	background-color: rgba(128, 128, 128, 0.164);
+}

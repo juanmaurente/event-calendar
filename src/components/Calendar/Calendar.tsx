@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Calendar.scss';
+import Cell from '../Cell/Cell';
 
 const Calendar = () => {
 	const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -41,7 +42,7 @@ const Calendar = () => {
 	const emptyCells = [];
 
 	for (let i = 0; i < firstDayOfWeek; i++) {
-		emptyCells.push(<div key={`empty-${i}`} className='empty-cell'></div>);
+		emptyCells.push(<div key={`empty-${i}`}></div>);
 	}
 
 	const days = [];
@@ -82,9 +83,7 @@ const Calendar = () => {
 				<div className='calendar-grid' data-testid='calendar-grid'>
 					{emptyCells}
 					{days.map((day) => (
-						<div key={day} className='calendar-cell'>
-							{day}
-						</div>
+						<Cell key={day} date={day} />
 					))}
 				</div>
 			</div>

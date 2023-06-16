@@ -26,25 +26,6 @@
 	grid-template-columns: repeat(7, 1fr);
 }
 
-.calendar-cell {
-	padding: 20px;
-	text-align: center;
-}
-
-.calendar-cell:hover {
-	cursor: pointer;
-	transition: all 0.4s ease;
-	transform: scale(1.15);
-	font-weight: 500;
-	background-color: rgba(128, 128, 128, 0.164);
-}
-
-.empty-cell {
-	border: 0;
-	padding: 10px;
-	text-align: center;
-}
-
 .calendar-header {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
