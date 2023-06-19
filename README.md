@@ -24,6 +24,18 @@ The design goals for this project were to create a simple and intuitive Events C
 -   Modal appears when a day cell is clicked (currently empty).
 -   Navigation between months to view upcoming and previous months.
 -   BONUS: Day, week, and month view of the calendar (to be implemented).
+-   The modal should include a form with the following fields:
+    -   Event Name
+    -   Start Date
+    -   End Date
+    -   Location
+    -   Label
+-   When an event is created, a card component should be displayed on the corresponding date cell of the calendar.
+-   The event card component should also be clickable and display a modal with event details and a countdown timer showing the time remaining until the event.
+-   When a user tries to add an event with a start date in the past, an error message should appear.
+-   The user should be able to filter the calendar by labels or location, allowing them to view specific events based on their preferences.
+-   Remember to validate the data coming from the user.
+-   For this project, you can store the events in an array on the frontend.
 
 ## Known Issues
 
@@ -41,8 +53,8 @@ Given more time, the following features could be added:
 
 During the development process, the following challenges were encountered:
 
--   Struggle 1: TESTING- Installing libraries and get it properly working. I had differences on my previous versions and I struggled configuring jest.config.js and package.json.
--   Struggle 2: SCSS. At first I didn't installed scss properly so I had issues to format my code with scss, after reading documentation I found out I've not installed correctly at first.
+-   Struggle 1: TESTING - Installing libraries and getting them properly working. I had differences in my previous versions, and I struggled to configure `jest.config.js` and `package.json`.
+-   Struggle 2: SCSS - At first, I didn't install SCSS properly, so I had issues formatting my code with SCSS. After reading the documentation, I found out that I hadn't installed it correctly initially.
 
 ## Licensing Details
 
