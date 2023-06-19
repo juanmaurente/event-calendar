@@ -4,9 +4,12 @@ import Cell from '../Cell/Cell';
 import Title from '../Title/Title';
 import MonthNames from '../../utils/MonthNames';
 import DayNames from '../../utils/DayNames';
+import Modal from '../Modal/Modal';
 
 const Calendar = () => {
 	const [currentMonth, setCurrentMonth] = useState(new Date());
+	const [showModal, setShowModal] = useState(false);
+	const [selectedDate, setSelectedDate] = useState<number | null>(null);
 
 	const month = MonthNames[currentMonth.getMonth()];
 	const year = currentMonth.getFullYear();
@@ -40,6 +43,11 @@ const Calendar = () => {
 		);
 	};
 
+	const handleCloseModal = () => {
+		setSelectedDate(null);
+		setShowModal(false);
+	};
+
 	return (
 		<div>
 			<Title
@@ -57,9 +65,16 @@ const Calendar = () => {
 				<div className='calendar-grid' data-testid='calendar-grid'>
 					{emptyCells}
 					{days.map((day) => (
-						<Cell key={day} date={day} />
+						<Cell
+							key={day}
+							date={day}
+							setSelectedDate={setSelectedDate}
+							showModal={showModal}
+							setShowModal={setShowModal}
+						/>
 					))}
 				</div>
+				{showModal && <Modal onClose={handleCloseModal} />}
 			</div>
 		</div>
 	);
