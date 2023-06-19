@@ -4,41 +4,30 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(216, 200, 253, 0.034);
+	background-color: rgba(156, 156, 156, 0.034);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
 .modal-content {
+	width: 50%;
 	background-color: #fff;
-	width: 80%;
-	height: 80%;
-	padding: 50px;
 	border-radius: 1px;
 	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.055);
 }
 
-.modal-content h2 {
-	margin-top: 0;
-	font-size: 4rem;
-}
-
-.modal-content p {
-	margin-bottom: 10px;
-}
-
 .modal-content button {
-	background-color: #481fff;
-	color: #fff;
-	padding: 2rem 3rem;
-	border: none;
-	border-radius: 3px;
-	cursor: pointer;
+	margin: 2rem;
 	transition: all 0.3s;
 }
 
 .modal-content button:hover {
-	color: #525252af;
-	background-color: #481fff3b;
+	cursor: pointer;
+	transition: all 0.4s ease;
+	transform: scale(1.05);
+	font-weight: 500;
+	color: #fff;
+	border: 0;
+	background-color: rgba(5, 5, 5, 0.877);
 }
