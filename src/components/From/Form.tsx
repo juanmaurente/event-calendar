@@ -8,10 +8,31 @@ const Form = () => {
 	const locationRef = useRef<HTMLInputElement>(null);
 	const labelRef = useRef<HTMLInputElement>(null);
 
+	const newEvent = {
+		name: '',
+		startDate: '',
+		endDate: '',
+		location: '',
+		label: '',
+	};
+
 	const handleSubmit = (event: FormEvent) => {
 		event.preventDefault();
-		if (nameRef.current != null && labelRef.current != null)
-			console.log(nameRef.current.value + ' ' + labelRef.current.value);
+		if (
+			nameRef.current &&
+			startDateRef.current &&
+			endDateRef.current &&
+			locationRef.current &&
+			labelRef.current
+		) {
+			newEvent.name = nameRef.current.value;
+			newEvent.startDate = startDateRef.current.value;
+			newEvent.endDate = endDateRef.current.value;
+			newEvent.location = locationRef.current.value;
+			newEvent.label = labelRef.current.value;
+		}
+
+		console.log(newEvent);
 	};
 
 	return (
