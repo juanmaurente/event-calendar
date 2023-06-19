@@ -1,31 +1,20 @@
 import React, { FormEvent, useState } from 'react';
+import { FieldValues, useForm } from 'react-hook-form';
 import './Form.scss';
 
 const Form = () => {
-	const [newEvent, setNewEvent] = useState({
-		name: '',
-		startDate: '',
-		endDate: '',
-		location: '',
-		label: '',
-	});
+	const { register, handleSubmit } = useForm();
 
-	const handleSubmit = (event: FormEvent) => {
-		event.preventDefault();
-		console.log(newEvent);
-	};
+	const onSubmit = (data: FieldValues) => console.log(data);
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form onSubmit={handleSubmit(onSubmit)}>
 			<div className='form-container'>
 				<label htmlFor='name' className='form-label'>
 					Name
 				</label>
 				<input
-					value={newEvent.name}
-					onChange={(event) =>
-						setNewEvent({ ...newEvent, name: event.target.value })
-					}
+					{...register('name')}
 					id='name'
 					type='text'
 					className='form-control'
@@ -34,13 +23,7 @@ const Form = () => {
 					Start Date
 				</label>
 				<input
-					value={newEvent.startDate}
-					onChange={(event) =>
-						setNewEvent({
-							...newEvent,
-							startDate: event.target.value,
-						})
-					}
+					{...register('startDate')}
 					id='startDate'
 					type='date'
 					className='form-control'
@@ -49,13 +32,7 @@ const Form = () => {
 					End Date
 				</label>
 				<input
-					value={newEvent.endDate}
-					onChange={(event) =>
-						setNewEvent({
-							...newEvent,
-							endDate: event.target.value,
-						})
-					}
+					{...register('endDate')}
 					id='endDate'
 					type='date'
 					className='form-control'
@@ -64,13 +41,7 @@ const Form = () => {
 					Location
 				</label>
 				<input
-					value={newEvent.location}
-					onChange={(event) =>
-						setNewEvent({
-							...newEvent,
-							location: event.target.value,
-						})
-					}
+					{...register('location')}
 					id='location'
 					type='text'
 					className='form-control'
@@ -79,13 +50,7 @@ const Form = () => {
 					Label
 				</label>
 				<input
-					value={newEvent.label}
-					onChange={(event) =>
-						setNewEvent({
-							...newEvent,
-							label: event.target.value,
-						})
-					}
+					{...register('label')}
 					id='label'
 					type='text'
 					className='form-control'
