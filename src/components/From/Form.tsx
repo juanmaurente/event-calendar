@@ -1,37 +1,17 @@
-import React, { FormEvent, useRef } from 'react';
+import React, { FormEvent, useState } from 'react';
 import './Form.scss';
 
 const Form = () => {
-	const nameRef = useRef<HTMLInputElement>(null);
-	const startDateRef = useRef<HTMLInputElement>(null);
-	const endDateRef = useRef<HTMLInputElement>(null);
-	const locationRef = useRef<HTMLInputElement>(null);
-	const labelRef = useRef<HTMLInputElement>(null);
-
-	const newEvent = {
+	const [newEvent, setNewEvent] = useState({
 		name: '',
 		startDate: '',
 		endDate: '',
 		location: '',
 		label: '',
-	};
+	});
 
 	const handleSubmit = (event: FormEvent) => {
 		event.preventDefault();
-		if (
-			nameRef.current &&
-			startDateRef.current &&
-			endDateRef.current &&
-			locationRef.current &&
-			labelRef.current
-		) {
-			newEvent.name = nameRef.current.value;
-			newEvent.startDate = startDateRef.current.value;
-			newEvent.endDate = endDateRef.current.value;
-			newEvent.location = locationRef.current.value;
-			newEvent.label = labelRef.current.value;
-		}
-
 		console.log(newEvent);
 	};
 
@@ -42,7 +22,10 @@ const Form = () => {
 					Name
 				</label>
 				<input
-					ref={nameRef}
+					value={newEvent.name}
+					onChange={(event) =>
+						setNewEvent({ ...newEvent, name: event.target.value })
+					}
 					id='name'
 					type='text'
 					className='form-control'
@@ -51,7 +34,13 @@ const Form = () => {
 					Start Date
 				</label>
 				<input
-					ref={startDateRef}
+					value={newEvent.startDate}
+					onChange={(event) =>
+						setNewEvent({
+							...newEvent,
+							startDate: event.target.value,
+						})
+					}
 					id='startDate'
 					type='date'
 					className='form-control'
@@ -60,7 +49,13 @@ const Form = () => {
 					End Date
 				</label>
 				<input
-					ref={endDateRef}
+					value={newEvent.endDate}
+					onChange={(event) =>
+						setNewEvent({
+							...newEvent,
+							endDate: event.target.value,
+						})
+					}
 					id='endDate'
 					type='date'
 					className='form-control'
@@ -69,7 +64,13 @@ const Form = () => {
 					Location
 				</label>
 				<input
-					ref={locationRef}
+					value={newEvent.location}
+					onChange={(event) =>
+						setNewEvent({
+							...newEvent,
+							location: event.target.value,
+						})
+					}
 					id='location'
 					type='text'
 					className='form-control'
@@ -78,7 +79,13 @@ const Form = () => {
 					Label
 				</label>
 				<input
-					ref={labelRef}
+					value={newEvent.label}
+					onChange={(event) =>
+						setNewEvent({
+							...newEvent,
+							label: event.target.value,
+						})
+					}
 					id='label'
 					type='text'
 					className='form-control'
