@@ -1,9 +1,33 @@
-import React, { FormEvent, useState } from 'react';
+// import React, { FormEvent, useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import './Form.scss';
 
+const schema = z.object({
+	name: z.string().min(3, { message: 'Name must be at least 3 characters' }),
+	startDate: z.date().refine((value) => value.getFullYear() >= 1900, {
+		message: 'Start date must be in or after 1900',
+	}),
+	endDate: z.date().refine((value) => value.getFullYear() <= 2030, {
+		message: 'End date must be in or before 2030',
+	}),
+	location: z
+		.string()
+		.min(3, { message: 'Location must be at least 3 characters' }),
+	label: z
+		.string()
+		.min(3, { message: 'Label must be at least 3 characters' }),
+});
+
+type FormData = z.infer<typeof schema>;
+
 const Form = () => {
-	const { register, handleSubmit } = useForm();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<FormData>({ resolver: zodResolver(schema) });
 
 	const onSubmit = (data: FieldValues) => console.log(data);
 
@@ -19,24 +43,34 @@ const Form = () => {
 					type='text'
 					className='form-control'
 				/>
+				{errors.name && (
+					<p className='text-danger'>{errors.name.message}</p>
+				)}
+
 				<label htmlFor='startDate' className='form-label'>
 					Start Date
 				</label>
 				<input
-					{...register('startDate')}
+					{...register('startDate', { valueAsDate: true })}
 					id='startDate'
 					type='date'
 					className='form-control'
 				/>
+				{errors.startDate && (
+					<p className='text-danger'>{errors.startDate.message}</p>
+				)}
 				<label htmlFor='endDate' className='form-label'>
 					End Date
 				</label>
 				<input
-					{...register('endDate')}
+					{...register('endDate', { valueAsDate: true })}
 					id='endDate'
 					type='date'
 					className='form-control'
 				/>
+				{errors.endDate && (
+					<p className='text-danger'>{errors.endDate.message}</p>
+				)}
 				<label htmlFor='location' className='form-label'>
 					Location
 				</label>
@@ -46,6 +80,10 @@ const Form = () => {
 					type='text'
 					className='form-control'
 				/>
+				{errors.location && (
+					<p className='text-danger'>{errors.location.message}</p>
+				)}
+
 				<label htmlFor='label' className='form-label'>
 					Label
 				</label>
@@ -55,6 +93,9 @@ const Form = () => {
 					type='text'
 					className='form-control'
 				/>
+				{errors.label && (
+					<p className='text-danger'>{errors.label.message}</p>
+				)}
 			</div>
 			<button className='form-submit' type='submit'>
 				Submit
