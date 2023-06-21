@@ -26,78 +26,92 @@ const Form = () => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		formState: { errors, isValid },
 	} = useForm<FormData>({ resolver: zodResolver(schema) });
 
 	const onSubmit = (data: FieldValues) => console.log(data);
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
-			<div className='form-container'>
-				<label htmlFor='name' className='form-label'>
-					Name
-				</label>
-				<input
-					{...register('name')}
-					id='name'
-					type='text'
-					className='form-control'
-				/>
-				{errors.name && (
-					<p className='text-danger'>{errors.name.message}</p>
-				)}
-
-				<label htmlFor='startDate' className='form-label'>
-					Start Date
-				</label>
-				<input
-					{...register('startDate', { valueAsDate: true })}
-					id='startDate'
-					type='date'
-					className='form-control'
-				/>
-				{errors.startDate && (
-					<p className='text-danger'>{errors.startDate.message}</p>
-				)}
-				<label htmlFor='endDate' className='form-label'>
-					End Date
-				</label>
-				<input
-					{...register('endDate', { valueAsDate: true })}
-					id='endDate'
-					type='date'
-					className='form-control'
-				/>
-				{errors.endDate && (
-					<p className='text-danger'>{errors.endDate.message}</p>
-				)}
-				<label htmlFor='location' className='form-label'>
-					Location
-				</label>
-				<input
-					{...register('location')}
-					id='location'
-					type='text'
-					className='form-control'
-				/>
-				{errors.location && (
-					<p className='text-danger'>{errors.location.message}</p>
-				)}
-
-				<label htmlFor='label' className='form-label'>
-					Label
-				</label>
-				<input
-					{...register('label')}
-					id='label'
-					type='text'
-					className='form-control'
-				/>
-				{errors.label && (
-					<p className='text-danger'>{errors.label.message}</p>
-				)}
+			<div className='form-header'>
+				<h2>Create New Event</h2>
 			</div>
-			<button className='form-submit' type='submit'>
+			<div className='form-content'>
+				<div className='form-field'>
+					<label htmlFor='name' className='form-label'>
+						Name
+					</label>
+					<input
+						{...register('name')}
+						id='name'
+						type='text'
+						className='form-control form-string'
+					/>
+					{errors.name && (
+						<p className='text-danger'>{errors.name.message}</p>
+					)}
+				</div>
+
+				<div className='form-field'>
+					<label htmlFor='startDate' className='form-label'>
+						Start Date
+					</label>
+					<input
+						{...register('startDate', { valueAsDate: true })}
+						id='startDate'
+						type='date'
+						className='form-control form-date'
+					/>
+					{errors.startDate && (
+						<p className='text-danger'>
+							{errors.startDate.message}
+						</p>
+					)}
+				</div>
+				<div className='form-field'>
+					<label htmlFor='endDate' className='form-label'>
+						End Date
+					</label>
+					<input
+						{...register('endDate', { valueAsDate: true })}
+						id='endDate'
+						type='date'
+						className='form-control form-date'
+					/>
+					{errors.endDate && (
+						<p className='text-danger'>{errors.endDate.message}</p>
+					)}
+				</div>
+				<div className='form-field'>
+					<label htmlFor='location' className='form-label'>
+						Location
+					</label>
+					<input
+						{...register('location')}
+						id='location'
+						type='text'
+						className='form-control form-string'
+					/>
+					{errors.location && (
+						<p className='text-danger'>{errors.location.message}</p>
+					)}
+				</div>
+				<div className='form-field'>
+					<label htmlFor='label' className='form-label'>
+						Label
+					</label>
+					<input
+						{...register('label')}
+						id='label'
+						type='text'
+						className='form-control form-string'
+					/>
+					{errors.label && (
+						<p className='text-danger'>{errors.label.message}</p>
+					)}
+				</div>
+			</div>
+			<button disabled={!isValid} className='form-submit' type='submit'>
 				Submit
 			</button>
 		</form>

@@ -21,7 +21,7 @@ The design goals for this project were to create a simple and intuitive Events C
 ## Features
 
 -   Display of a calendar with the current month title and a grid of clickable day cells.
--   Modal appears when a day cell is clicked (currently empty).
+-   Modal appears when a day cell is clicked.
 -   Navigation between months to view upcoming and previous months.
 -   BONUS: Day, week, and month view of the calendar (to be implemented).
 -   The modal should include a form with the following fields:
@@ -55,6 +55,7 @@ During the development process, the following challenges were encountered:
 
 -   Struggle 1: TESTING - Installing libraries and getting them properly working. I had differences in my previous versions, and I struggled to configure `jest.config.js` and `package.json`.
 -   Struggle 2: SCSS - At first, I didn't install SCSS properly, so I had issues formatting my code with SCSS. After reading the documentation, I found out that I hadn't installed it correctly initially.
+-   Struggle 2: FORM Validation - I decided to use Zod Library as I found it interesting to apply for this project. I started with useRef hook, then I changed to useState to update and validate but finally I decided to use a combinatino of useForm hook and Zod. (May change in the future but it works correctly for now)
 
 ## Licensing Details
 
