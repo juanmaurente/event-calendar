@@ -1,4 +1,10 @@
 import './Title.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+	faChevronRight,
+	faChevronLeft,
+} from '@fortawesome/free-solid-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 interface Props {
 	month: string;
@@ -14,13 +20,14 @@ const Title: React.FC<Props> = ({
 	handleNextMonth,
 }) => {
 	return (
-		<div className='calendar-title'>
+		<div className='title-container'>
 			<div className='chevron' onClick={handlePrevMonth}>
-				&lt;
+				<FontAwesomeIcon icon={faChevronLeft as IconProp} />
 			</div>
 			<h2>{`${month} ${year}`}</h2>
+
 			<div className='chevron' onClick={handleNextMonth}>
-				&gt;
+				<FontAwesomeIcon icon={faChevronRight as IconProp} />
 			</div>
 		</div>
 	);

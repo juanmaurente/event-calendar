@@ -49,14 +49,14 @@ const Calendar = () => {
 	};
 
 	return (
-		<div>
+		<div className='container'>
 			<Title
 				month={month}
 				year={year}
 				handlePrevMonth={handlePrevMonth}
 				handleNextMonth={handleNextMonth}
 			/>
-			<div className='calendar'>
+			<div>
 				<div className='calendar-header'>
 					{DayNames.map((day) => (
 						<div key={day}>{day}</div>

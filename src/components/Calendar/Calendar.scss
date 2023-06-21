@@ -1,3 +1,13 @@
+.container {
+	width: 680px;
+	height: 80vh;
+	background-color: #12121f;
+	color: #eee;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
 .calendar-grid {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
