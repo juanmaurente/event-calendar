@@ -24,7 +24,7 @@ const Title: React.FC<Props> = ({
 			<div className='chevron' onClick={handlePrevMonth}>
 				<FontAwesomeIcon icon={faChevronLeft as IconProp} />
 			</div>
-			<h2>{`${month} ${year}`}</h2>
+			<h2 className='title-month'>{`${month} ${year}`}</h2>
 
 			<div className='chevron' onClick={handleNextMonth}>
 				<FontAwesomeIcon icon={faChevronRight as IconProp} />

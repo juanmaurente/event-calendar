@@ -13,21 +13,20 @@
 .modal-content {
 	width: 80vw;
 	padding: 2rem;
-	background-color: #fff;
+	background-color: #12121f;
 	border-radius: 1px;
 }
 
-.modal-content button {
-	margin: 2rem;
-	transition: all 0.3s;
+.close {
+	margin: 0 20px;
+	font-size: 25px;
+	font-weight: 500;
+	transition: all 0.4s ease;
 }
 
-.modal-content button:hover {
-	cursor: pointer;
-	transition: all 0.4s ease;
-	transform: scale(1.05);
-	font-weight: 500;
-	color: #fff;
-	border: 0;
-	background-color: rgba(5, 5, 5, 0.877);
+.close:hover {
+	font-weight: 600;
+	border-radius: 100%;
+	transform: scale(1.15);
+	background-color: rgba(128, 128, 128, 0.164);
 }

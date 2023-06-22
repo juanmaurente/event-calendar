@@ -57,7 +57,7 @@ const Calendar = () => {
 				handleNextMonth={handleNextMonth}
 			/>
 			<div>
-				<div className='calendar-header'>
+				<div className='calendar-grid calendar-header'>
 					{DayNames.map((day) => (
 						<div key={day}>{day}</div>
 					))}
