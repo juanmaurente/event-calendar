@@ -32,10 +32,8 @@ const Form = () => {
 	const onSubmit = (data: FieldValues) => console.log(data);
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
-			<div className='form-header'>
-				<h2>Create New Event</h2>
-			</div>
+		<form onSubmit={handleSubmit(onSubmit)} className='form-container'>
+			<h2 className='form-header'>Create New Event</h2>
 			<div className='form-content'>
 				<div className='form-field'>
 					<label htmlFor='name' className='form-label'>
