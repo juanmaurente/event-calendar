@@ -1,77 +1,94 @@
 .form-container {
-	width: 100%;
+	margin: 60px;
 }
 
 .form-header {
 	text-align: left;
 	font-weight: 500;
 	text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.6);
-	margin-bottom: 50px;
+	letter-spacing: 2px;
+	padding-bottom: 30px;
 }
 
 .form-content {
 	display: grid;
-	grid-template-columns: repeat(3, 2fr);
-	align-items: center;
+	grid-template-columns: repeat(2, 1fr);
 	gap: 10px;
 }
 
 .form-field {
 	display: flex;
-	align-items: center;
-	justify-content: start;
+	flex-direction: column;
+	align-items: start;
 }
 
 .form-label {
+	text-align: left;
 	font-size: 1rem;
-	margin: 10px;
-	text-align: right;
+	margin-bottom: 10px;
+	color: #aaa;
+}
+
+.form-input {
+	border-radius: 2px;
+	max-width: 300px;
 }
 
 .form-control {
-	width: 100px;
-	padding: 0.5rem 1rem;
+	padding: 1rem;
 	font-size: 1rem;
-	color: rgba(0, 0, 0, 0.555);
-	border: 1px solid #ccc;
-	border-radius: 15px;
+	border: none;
+	color: #aaa;
+	border: 1px solid #aaa;
+	background-color: #00000000;
+	margin-bottom: 20px;
+	font-weight: 100;
+	position: relative;
+	cursor: pointer;
+	transition: all 0.2s;
 }
 
-.form-string {
-	width: 80%;
+.form-control::placeholder {
+	color: #aaa;
+	font-weight: 100;
+	position: absolute;
+	top: 50%;
+	left: 1rem;
+	transform: translateY(-50%);
 }
-.form-date {
-	width: 40%;
+
+.form-control:hover {
+	background-color: #bdbbbb2f;
 }
 
 .text-danger {
 	color: #dc3545;
 }
 
-.form-submit {
-	margin: 1rem auto;
-	padding: 0.5rem 1rem;
+#form-submit {
+	min-width: 200px;
+	margin-top: 3rem;
+	padding: 1.5rem;
 	font-size: 1rem;
-	text-align: center;
-	text-decoration: none;
-	background-color: #49a1ff;
-	color: #fff;
+	background-color: #54a0f1;
+	color: #ffffff;
 	border: none;
-	border-radius: 20px;
+	border-radius: 3px;
 	cursor: pointer;
 }
 
-.form-submit:disabled {
+#form-submit:disabled {
 	opacity: 0.65;
 	cursor: not-allowed;
 }
 
-.form-submit:hover {
-	background-color: #0069d9;
+#form-submit:hover {
+	background-color: #54a0f1;
 }
 
-.form-submit:disabled:hover {
+#form-submit:disabled:hover {
 	opacity: 0.95;
-	color: rgb(255, 0, 0);
+	color: #ffffff;
+	font-weight: 500;
 	cursor: not-allowed;
 }

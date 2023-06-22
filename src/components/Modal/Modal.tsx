@@ -13,9 +13,11 @@ const Modal: React.FC<Props> = ({ onClose }) => {
 	return (
 		<div className='modal-overlay'>
 			<div className='modal-content'>
-				<button onClick={onClose}>
-					<FontAwesomeIcon icon={faClose as IconProp} />
-				</button>
+				<div className='close-button'>
+					<button onClick={onClose}>
+						<FontAwesomeIcon icon={faClose as IconProp} />
+					</button>
+				</div>
 				<Form />
 			</div>
 		</div>
