@@ -7,7 +7,14 @@
 	font-weight: 500;
 	text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.6);
 	letter-spacing: 2px;
-	padding-bottom: 30px;
+	margin-bottom: 40px;
+}
+
+.horizontal-line {
+	width: 100%;
+	height: 0.5px;
+	background-color: #eeeeee46;
+	margin-bottom: 40px;
 }
 
 .form-content {
@@ -35,15 +42,13 @@
 }
 
 .form-control {
-	padding: 1rem;
+	padding: 10px;
 	font-size: 1rem;
 	border: none;
 	color: #aaa;
 	border: 1px solid #aaa;
-	background-color: #00000000;
 	margin-bottom: 20px;
 	font-weight: 100;
-	position: relative;
 	cursor: pointer;
 	transition: all 0.2s;
 }
@@ -51,14 +56,6 @@
 .form-control::placeholder {
 	color: #aaa;
 	font-weight: 100;
-	position: absolute;
-	top: 50%;
-	left: 1rem;
-	transform: translateY(-50%);
-}
-
-.form-control:hover {
-	background-color: #bdbbbb2f;
 }
 
 .text-danger {
@@ -77,13 +74,13 @@
 	cursor: pointer;
 }
 
+#form-submit:hover {
+	background-color: #54a0f1;
+}
+
 #form-submit:disabled {
 	opacity: 0.65;
 	cursor: not-allowed;
-}
-
-#form-submit:hover {
-	background-color: #54a0f1;
 }
 
 #form-submit:disabled:hover {
@@ -91,4 +88,14 @@
 	color: #ffffff;
 	font-weight: 500;
 	cursor: not-allowed;
+}
+
+.custom-date-input::-webkit-calendar-picker-indicator {
+	filter: invert(1);
+	opacity: 0.5;
+	cursor: pointer;
+}
+
+.custom-date-input:focus::-webkit-calendar-picker-indicator {
+	opacity: 0.5;
 }

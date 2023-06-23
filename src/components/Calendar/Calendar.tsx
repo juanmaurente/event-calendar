@@ -1,15 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Calendar.scss';
 import Cell from '../Cell/Cell';
 import Title from '../Title/Title';
 import MonthNames from '../../utils/MonthNames';
 import DayNames from '../../utils/DayNames';
 import Modal from '../Modal/Modal';
+import { Event } from '../From/types';
 
 const Calendar = () => {
 	const [currentMonth, setCurrentMonth] = useState(new Date());
 	const [showModal, setShowModal] = useState(false);
 	const [selectedDate, setSelectedDate] = useState<number | null>(null);
+	const [events, setEvents] = useState<Event[]>([]);
 
 	const month = MonthNames[currentMonth.getMonth()];
 	const year = currentMonth.getFullYear();
@@ -48,6 +50,14 @@ const Calendar = () => {
 		setShowModal(false);
 	};
 
+	const handleAddEvent = (newEvent: Event) => {
+		setEvents((prevEvents) => [...prevEvents, newEvent]);
+	};
+
+	useEffect(() => {
+		console.log(events);
+	}, [events]);
+
 	return (
 		<div className='container'>
 			<Title
@@ -74,7 +84,12 @@ const Calendar = () => {
 						/>
 					))}
 				</div>
-				{showModal && <Modal onClose={handleCloseModal} />}
+				{showModal && (
+					<Modal
+						onClose={handleCloseModal}
+						handleAddEvent={handleAddEvent}
+					/>
+				)}
 			</div>
 		</div>
 	);

@@ -3,6 +3,11 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import './Form.scss';
+import { Event } from './types';
+
+interface FormProps {
+	handleAddEvent: (newEvent: Event) => void;
+}
 
 const schema = z.object({
 	name: z.string().min(3, { message: 'Name must be at least 3 characters' }),
@@ -23,18 +28,31 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const Form = () => {
+const Form: React.FC<FormProps> = ({ handleAddEvent }) => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors, isValid },
 	} = useForm<FormData>({ resolver: zodResolver(schema) });
 
-	const onSubmit = (data: FieldValues) => console.log(data);
+	const onSubmit = (data: FieldValues) => {
+		const { name, startDate, endDate, location, label } = data;
+
+		const newEvent: Event = {
+			name: name as string,
+			startDate: startDate as Date,
+			endDate: endDate as Date,
+			location: location as string,
+			label: label as string,
+		};
+
+		handleAddEvent(newEvent);
+	};
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className='form-container'>
-			<h2 className='form-header'>Create New Event</h2>
+			<h2 className='form-header'>Create Event</h2>
+			<div className='horizontal-line'></div>
 			<div className='form-content'>
 				<div className='form-field'>
 					<label htmlFor='name' className='form-label'>
@@ -60,10 +78,10 @@ const Form = () => {
 					</label>
 					<div className='form-input'>
 						<input
-							{...register('startDate', { valueAsDate: true })}
+							{...register('startDate')}
 							id='startDate'
 							type='date'
-							className='form-control form-date'
+							className='form-control custom-date-input'
 						/>
 					</div>
 					{/* {errors.startDate && (
@@ -79,10 +97,10 @@ const Form = () => {
 					</label>
 					<div className='form-input'>
 						<input
-							{...register('endDate', { valueAsDate: true })}
+							{...register('endDate')}
 							id='endDate'
 							type='date'
-							className='form-control form-date'
+							className='form-control form-date custom-date-input'
 						/>
 					</div>
 					{/* {errors.endDate && (
