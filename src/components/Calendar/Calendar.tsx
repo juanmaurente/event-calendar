@@ -1,17 +1,27 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './Calendar.scss';
 import Cell from '../Cell/Cell';
 import Title from '../Title/Title';
 import MonthNames from '../../utils/MonthNames';
 import DayNames from '../../utils/DayNames';
-import Modal from '../Modal/Modal';
-import { Event } from '../From/types';
+import { Event } from '../Form/types';
 
-const Calendar = () => {
+interface Props {
+	handleAddEvent: (newEvent: Event) => void;
+	showModal: boolean;
+	setShowModal: (show: boolean) => void;
+	onCloseModal: (show: boolean) => void;
+	setDisplayEvent: (show: boolean) => void;
+}
+
+const Calendar: React.FC<Props> = ({
+	showModal,
+	setShowModal,
+	onCloseModal,
+	setDisplayEvent,
+}) => {
 	const [currentMonth, setCurrentMonth] = useState(new Date());
-	const [showModal, setShowModal] = useState(false);
 	const [selectedDate, setSelectedDate] = useState<number | null>(null);
-	const [events, setEvents] = useState<Event[]>([]);
 
 	const month = MonthNames[currentMonth.getMonth()];
 	const year = currentMonth.getFullYear();
@@ -39,22 +49,8 @@ const Calendar = () => {
 		);
 	};
 
-	const handleCloseModal = () => {
-		setSelectedDate(null);
-		setShowModal(false);
-	};
-
-	const handleAddEvent = (newEvent: Event) => {
-		setEvents((prevEvents) => [...prevEvents, newEvent]);
-		console.log(events);
-	};
-
-	useEffect(() => {
-		console.log(events);
-	}, [events]);
-
 	return (
-		<div className='container'>
+		<div className='calendar-container'>
 			<Title
 				month={month}
 				year={year}
@@ -76,15 +72,11 @@ const Calendar = () => {
 							setSelectedDate={setSelectedDate}
 							showModal={showModal}
 							setShowModal={setShowModal}
+							onCloseModal={onCloseModal}
+							setDisplayEvent={setDisplayEvent}
 						/>
 					))}
 				</div>
-				{showModal && (
-					<Modal
-						onClose={handleCloseModal}
-						handleAddEvent={handleAddEvent}
-					/>
-				)}
 			</div>
 		</div>
 	);

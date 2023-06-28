@@ -1,0 +1,42 @@
+import './EventsList.scss';
+import { Event } from '../Form/types';
+import { v4 as uuidv4 } from 'uuid';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+
+interface Props {
+	events: Event[];
+	setShowModal: (show: boolean) => void;
+	setDisplayForm: (show: boolean) => void;
+}
+
+const EventsList: React.FC<Props> = ({
+	events,
+	setShowModal,
+	setDisplayForm,
+}) => {
+	const handleClick = () => {
+		setShowModal(true);
+		setDisplayForm(true);
+	};
+
+	return (
+		<div className='events-container'>
+			<div className='new-event'>
+				<button onClick={handleClick}>
+					<FontAwesomeIcon icon={faPlus as IconProp} />
+				</button>
+			</div>
+			<ul>
+				{events.length == 0 ? (
+					<p>No events</p>
+				) : (
+					events.map((event) => <li key={uuidv4()}>{event.name}</li>)
+				)}
+			</ul>
+		</div>
+	);
+};
+
+export default EventsList;

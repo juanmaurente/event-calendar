@@ -1,10 +1,10 @@
 import './App.css';
-import Calendar from './components/Calendar/Calendar';
+import Main from './components/Main/Main';
 
 function App() {
 	return (
 		<>
-			<Calendar />
+			<Main />
 		</>
 	);
 }

@@ -1,6 +1,6 @@
 import { FieldValues, useForm } from 'react-hook-form';
 import './Form.scss';
-import { Event } from '../From/types';
+import { Event } from './types';
 
 interface Props {
 	handleAddEvent: (newEvent: Event) => void;

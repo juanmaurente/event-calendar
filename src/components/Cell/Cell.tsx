@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Modal from '../Modal/Modal';
 import './Cell.scss';
 
@@ -7,6 +6,8 @@ interface Props {
 	setSelectedDate: (date: number | null) => void;
 	showModal: boolean;
 	setShowModal: (show: boolean) => void;
+	setDisplayEvent: (show: boolean) => void;
+	onCloseModal: (show: boolean) => void;
 }
 
 const Cell: React.FC<Props> = ({
@@ -14,22 +15,19 @@ const Cell: React.FC<Props> = ({
 	setSelectedDate,
 	showModal,
 	setShowModal,
+	setDisplayEvent,
 }) => {
-	const handleCloseModal = () => {
-		setShowModal(false);
-	};
-
 	const handleClick = () => {
 		if (date !== undefined) {
 			setSelectedDate(date);
 			setShowModal(true);
+			setDisplayEvent(true);
 		}
 	};
 
 	return (
 		<div className='calendar-cell' onClick={handleClick}>
 			{date !== undefined ? date : ''}
-			{showModal && <Modal onClose={handleCloseModal} />}
 		</div>
 	);
 };

@@ -1,5 +1,5 @@
-.container {
-	width: 680px;
+.calendar-container {
+	width: 60%;
 	min-height: 500px;
 	height: 60vh;
 	background-color: #12121f;
@@ -12,7 +12,6 @@
 .calendar-grid {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
-	gap: 0;
 }
 
 .calendar-header {
