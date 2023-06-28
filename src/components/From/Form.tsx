@@ -11,13 +11,8 @@ interface FormProps {
 
 const schema = z.object({
 	name: z.string().min(3, { message: 'Name must be at least 3 characters' }),
-	startDate: z.date().refine((value) => {
-		const today = new Date();
-		return value >= today;
-	}, 'Start date must be today or after today'),
-	endDate: z.date().refine((value) => value.getFullYear() <= 2030, {
-		message: 'End date must be in or before 2030',
-	}),
+	startDate: z.date(),
+	endDate: z.date(),
 	location: z
 		.string()
 		.min(3, { message: 'Location must be at least 3 characters' }),
@@ -46,7 +41,8 @@ const Form: React.FC<FormProps> = ({ handleAddEvent }) => {
 			label: label as string,
 		};
 
-		handleAddEvent(newEvent);
+		console.log(newEvent);
+		// handleAddEvent(newEvent);
 	};
 
 	return (
