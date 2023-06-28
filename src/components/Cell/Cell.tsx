@@ -1,4 +1,3 @@
-import Modal from '../Modal/Modal';
 import './Cell.scss';
 
 interface Props {
@@ -13,7 +12,6 @@ interface Props {
 const Cell: React.FC<Props> = ({
 	date,
 	setSelectedDate,
-	showModal,
 	setShowModal,
 	setDisplayEvent,
 }) => {

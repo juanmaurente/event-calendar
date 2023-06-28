@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import EventCard from '../EventCard/EventCard';
 
 interface Props {
 	events: Event[];
@@ -32,7 +33,9 @@ const EventsList: React.FC<Props> = ({
 				{events.length == 0 ? (
 					<p>No events</p>
 				) : (
-					events.map((event) => <li key={uuidv4()}>{event.name}</li>)
+					events.map((event) => (
+						<EventCard key={uuidv4()} event={event} />
+					))
 				)}
 			</ul>
 		</div>

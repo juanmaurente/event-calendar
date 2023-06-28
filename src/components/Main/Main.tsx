@@ -7,12 +7,21 @@ import Modal from '../Modal/Modal';
 
 const Main = () => {
 	const [showModal, setShowModal] = useState(false);
-	const [events, setEvents] = useState<Event[]>([]);
+	const [events, setEvents] = useState<Event[]>([
+		{
+			name: 'Hacer los mandados',
+			startDate: new Date('2023-06-30'),
+			endDate: new Date('2023-06-30'),
+			location: 'Sydney',
+			label: 'compras',
+		},
+	]);
 	const [displayForm, setDisplayForm] = useState(false);
 	const [displayEvent, setDisplayEvent] = useState(false);
 
 	const handleAddEvent = (newEvent: Event) => {
 		setEvents((prevEvents) => [...prevEvents, newEvent]);
+		setShowModal(false);
 		console.log(events);
 	};
 

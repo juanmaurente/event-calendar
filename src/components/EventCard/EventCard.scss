@@ -1,0 +1,20 @@
+.card-container {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	border: 1px solid #eeeeee1a;
+	overflow: auto;
+}
+
+.card-date {
+	width: 10%;
+	font-size: 15px;
+	padding: 10px;
+	color: #07071d;
+	background-color: #eee;
+}
+
+.card-info h4 {
+	font-weight: 500;
+	font-size: 15px;
+}
