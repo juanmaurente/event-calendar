@@ -78,18 +78,6 @@
 	background-color: #54a0f1;
 }
 
-#form-submit:disabled {
-	opacity: 0.65;
-	cursor: not-allowed;
-}
-
-#form-submit:disabled:hover {
-	opacity: 0.95;
-	color: #ffffff;
-	font-weight: 500;
-	cursor: not-allowed;
-}
-
 .custom-date-input::-webkit-calendar-picker-indicator {
 	filter: invert(1);
 	opacity: 0.5;

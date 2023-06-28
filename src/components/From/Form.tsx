@@ -1,48 +1,24 @@
-// import React, { FormEvent, useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
 import './Form.scss';
-import { Event } from './types';
+import { Event } from '../From/types';
 
-interface FormProps {
+interface Props {
 	handleAddEvent: (newEvent: Event) => void;
 }
 
-const schema = z.object({
-	name: z.string().min(3, { message: 'Name must be at least 3 characters' }),
-	startDate: z.date(),
-	endDate: z.date(),
-	location: z
-		.string()
-		.min(3, { message: 'Location must be at least 3 characters' }),
-	label: z
-		.string()
-		.min(3, { message: 'Label must be at least 3 characters' }),
-});
-
-type FormData = z.infer<typeof schema>;
-
-const Form: React.FC<FormProps> = ({ handleAddEvent }) => {
-	const {
-		register,
-		handleSubmit,
-		formState: { errors, isValid },
-	} = useForm<FormData>({ resolver: zodResolver(schema) });
+const Form: React.FC<Props> = ({ handleAddEvent }) => {
+	const { register, handleSubmit } = useForm();
 
 	const onSubmit = (data: FieldValues) => {
-		const { name, startDate, endDate, location, label } = data;
-
-		const newEvent: Event = {
-			name: name as string,
-			startDate: startDate as Date,
-			endDate: endDate as Date,
-			location: location as string,
-			label: label as string,
+		const newEvent = {
+			name: data.name,
+			startDate: data.startDate,
+			endDate: data.endDate,
+			location: data.location,
+			label: data.label,
 		};
 
-		console.log(newEvent);
-		// handleAddEvent(newEvent);
+		handleAddEvent(newEvent);
 	};
 
 	return (
@@ -54,94 +30,60 @@ const Form: React.FC<FormProps> = ({ handleAddEvent }) => {
 					<label htmlFor='name' className='form-label'>
 						Name
 					</label>
-					<div className='form-input'>
-						<input
-							{...register('name')}
-							id='name'
-							type='text'
-							className='form-control form-string'
-							placeholder='Enter name'
-						/>
-					</div>
-					{/* {errors.name && (
-						<p className='text-danger'>{errors.name.message}</p>
-					)} */}
+					<input
+						{...register('name')}
+						id='name'
+						type='text'
+						className='form-control form-string'
+					/>
 				</div>
-
 				<div className='form-field'>
 					<label htmlFor='startDate' className='form-label'>
 						Start Date
 					</label>
-					<div className='form-input'>
-						<input
-							{...register('startDate')}
-							id='startDate'
-							type='date'
-							className='form-control custom-date-input'
-						/>
-					</div>
-					{/* {errors.startDate && (
-						<p className='text-danger'>
-							{errors.startDate.message}
-						</p>
-					)} */}
+					<input
+						{...register('startDate')}
+						id='startDate'
+						type='date'
+						className='form-control custom-date-input'
+					/>
 				</div>
-
 				<div className='form-field'>
 					<label htmlFor='endDate' className='form-label'>
 						End Date
 					</label>
-					<div className='form-input'>
-						<input
-							{...register('endDate')}
-							id='endDate'
-							type='date'
-							className='form-control form-date custom-date-input'
-						/>
-					</div>
-					{/* {errors.endDate && (
-						<p className='text-danger'>{errors.endDate.message}</p>
-					)} */}
+					<input
+						{...register('endDate')}
+						id='endDate'
+						type='date'
+						className='form-control custom-date-input'
+					/>
 				</div>
-
 				<div className='form-field'>
 					<label htmlFor='location' className='form-label'>
 						Location
 					</label>
-					<div className='form-input'>
-						<input
-							{...register('location')}
-							id='location'
-							type='text'
-							className='form-control form-string'
-							placeholder='Enter location'
-						/>
-					</div>
-					{/* {errors.location && (
-						<p className='text-danger'>{errors.location.message}</p>
-					)} */}
+					<input
+						{...register('location')}
+						id='location'
+						type='text'
+						className='form-control'
+					/>
 				</div>
-
 				<div className='form-field'>
 					<label htmlFor='label' className='form-label'>
 						Label
 					</label>
-					<div className='form-input'>
-						<input
-							{...register('label')}
-							id='label'
-							type='text'
-							className='form-control form-string'
-							placeholder='Enter label'
-						/>
-					</div>
-					{/* {errors.label && (
-						<p className='text-danger'>{errors.label.message}</p>
-					)} */}
+					<input
+						{...register('label')}
+						id='label'
+						type='text'
+						className='form-control'
+					/>
 				</div>
 			</div>
-			<button disabled={!isValid} id='form-submit' type='submit'>
-				Create Event
+			<button id='form-submit' type='submit'>
+				Submit
 			</button>
 		</form>
 	);

@@ -20,12 +20,6 @@ const Calendar = () => {
 		(_, i) => i + 1,
 	);
 
-	// const daysInCurrentMonth = new Date(year, currentMonth.getMonth() + 1, 0).getDate();
-	// const days = [];
-	// for (let day = 1; day <= daysInCurrentMonth; day++) {
-	// 	days.push(day);
-	// }
-
 	const firstDayOfWeek = new Date(year, currentMonth.getMonth(), 0).getDay();
 	const emptyCells = [];
 
@@ -52,6 +46,7 @@ const Calendar = () => {
 
 	const handleAddEvent = (newEvent: Event) => {
 		setEvents((prevEvents) => [...prevEvents, newEvent]);
+		console.log(events);
 	};
 
 	useEffect(() => {
