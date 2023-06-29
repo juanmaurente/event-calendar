@@ -7,6 +7,7 @@ interface Props {
 	setShowModal: (show: boolean) => void;
 	setDisplayEvent: (show: boolean) => void;
 	onCloseModal: (show: boolean) => void;
+	hasEvents: boolean;
 }
 
 const Cell: React.FC<Props> = ({
@@ -14,6 +15,7 @@ const Cell: React.FC<Props> = ({
 	setSelectedDate,
 	setShowModal,
 	setDisplayEvent,
+	hasEvents,
 }) => {
 	const handleClick = () => {
 		if (date !== undefined) {
@@ -24,7 +26,9 @@ const Cell: React.FC<Props> = ({
 	};
 
 	return (
-		<div className='calendar-cell' onClick={handleClick}>
+		<div
+			className={`calendar-cell ${hasEvents ? 'has-events' : ''}`}
+			onClick={handleClick}>
 			{date !== undefined ? date : ''}
 		</div>
 	);

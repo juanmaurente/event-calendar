@@ -1,9 +1,10 @@
 .card-container {
 	margin-top: 10px;
+	width: 80%;
 	min-height: 60px;
 	display: grid;
 	grid-template-columns: 80px auto 130px;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	border: 1px solid #eeeeee1a;
 	border-radius: 5px;

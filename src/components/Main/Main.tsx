@@ -15,6 +15,13 @@ const Main = () => {
 			location: 'Sydney',
 			label: 'Study',
 		},
+		{
+			name: 'Complete Event-Calendar Project',
+			startDate: new Date('2023-06-29'),
+			endDate: new Date('2023-06-30'),
+			location: 'Sydney',
+			label: 'Study',
+		},
 	]);
 	const [displayForm, setDisplayForm] = useState(false);
 	const [displayEvent, setDisplayEvent] = useState(false);
@@ -22,7 +29,7 @@ const Main = () => {
 	const handleAddEvent = (newEvent: Event) => {
 		setEvents((prevEvents) => [...prevEvents, newEvent]);
 		setShowModal(false);
-		console.log(events);
+		console.log([...events, newEvent]);
 	};
 
 	const handleCloseModal = () => {
@@ -49,6 +56,7 @@ const Main = () => {
 				setShowModal={setShowModal}
 				onCloseModal={handleCloseModal}
 				setDisplayEvent={setDisplayEvent}
+				events={events}
 			/>
 			{showModal && (
 				<Modal
