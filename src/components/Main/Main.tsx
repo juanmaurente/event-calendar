@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './Main.scss';
 import Calendar from '../Calendar/Calendar';
-import { Event } from '../Form/types';
+import { Event } from '../../utils/types';
 import EventsList from '../EventsList/EventsList';
 import Modal from '../Modal/Modal';
 

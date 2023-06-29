@@ -4,7 +4,7 @@ import Form from '../Form/Form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { Event } from '../Form/types';
+import { Event } from '../../utils/types';
 
 interface Props {
 	onClose: () => void;

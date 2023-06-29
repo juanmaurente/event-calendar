@@ -1,5 +1,5 @@
 import './EventsList.scss';
-import { Event } from '../Form/types';
+import { Event } from '../../utils/types';
 import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';

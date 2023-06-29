@@ -1,4 +1,4 @@
-import { Event } from '../Form/types';
+import { Event } from '../../utils/types';
 import './EventCard.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faEye, faPencil } from '@fortawesome/free-solid-svg-icons';

@@ -4,7 +4,7 @@ import Cell from '../Cell/Cell';
 import Title from '../Title/Title';
 import MonthNames from '../../utils/MonthNames';
 import DayNames from '../../utils/DayNames';
-import { Event } from '../Form/types';
+import { Event } from '../../utils/types';
 
 interface Props {
 	handleAddEvent: (newEvent: Event) => void;

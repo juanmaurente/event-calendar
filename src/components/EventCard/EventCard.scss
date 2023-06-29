@@ -1,10 +1,9 @@
 .card-container {
 	margin-top: 10px;
-	width: 90%;
-	min-height: 80px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
+	min-height: 60px;
+	display: grid;
+	grid-template-columns: 80px auto 130px;
+	justify-content: center;
 	align-items: center;
 	border: 1px solid #eeeeee1a;
 	border-radius: 5px;
@@ -25,7 +24,7 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	font-size: 13px;
+	font-size: 16px;
 	font-weight: 800;
 	padding: 0 15px;
 	color: #000070;
