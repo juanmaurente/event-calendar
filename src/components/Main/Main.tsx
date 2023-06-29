@@ -9,11 +9,11 @@ const Main = () => {
 	const [showModal, setShowModal] = useState(false);
 	const [events, setEvents] = useState<Event[]>([
 		{
-			name: 'Hacer los mandados',
-			startDate: new Date('2023-06-30'),
+			name: 'Complete Event-Calendar Project',
+			startDate: new Date('2023-06-17'),
 			endDate: new Date('2023-06-30'),
 			location: 'Sydney',
-			label: 'compras',
+			label: 'Study',
 		},
 	]);
 	const [displayForm, setDisplayForm] = useState(false);

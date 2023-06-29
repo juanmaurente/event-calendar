@@ -1,20 +1,77 @@
 .card-container {
-	width: 100%;
+	margin-top: 10px;
+	width: 90%;
+	min-height: 80px;
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 	border: 1px solid #eeeeee1a;
-	overflow: auto;
+	border-radius: 5px;
+	overflow: hidden;
+	transition: all ease 0.2s;
+}
+
+.card-container:hover {
+	cursor: pointer;
+	transform: scale(1.05);
+	background-color: #eeeeee1f;
 }
 
 .card-date {
-	width: 10%;
-	font-size: 15px;
-	padding: 10px;
-	color: #07071d;
+	height: 100%;
+	width: 80px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	font-size: 13px;
+	font-weight: 800;
+	padding: 0 15px;
+	color: #000070;
 	background-color: #eee;
 }
 
 .card-info h4 {
+	white-space: nowrap;
+	font-weight: 200;
+	padding: 0 10px;
+	font-size: 12px;
+}
+
+.card-buttons {
+	width: 120px;
+}
+
+.list-icons {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.list-icons li {
+	list-style: none;
+	display: inline;
+}
+
+.list-icons button {
+	background-color: #1b1b3046;
+	width: 25px;
+	height: 25px;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 0;
 	font-weight: 500;
-	font-size: 15px;
+	font-size: 14px;
+	transition: all 0.4s ease;
+	cursor: pointer;
+}
+
+.list-icons button:hover {
+	font-weight: 600;
+	border-radius: 100%;
+	transform: scale(1.15);
+	background-color: rgba(26, 172, 104, 0.603);
 }
