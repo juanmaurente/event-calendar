@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './Main.scss';
 import Calendar from '../Calendar/Calendar';
+import MonthNames from '../../utils/MonthNames';
 import { Event } from '../../utils/types';
 import EventsList from '../EventsList/EventsList';
 import Modal from '../Modal/Modal';
@@ -10,19 +11,67 @@ const Main = () => {
 	const [events, setEvents] = useState<Event[]>([
 		{
 			name: 'Complete Event-Calendar Project',
-			startDate: new Date('2023-06-17'),
+			startDate: new Date('2023-06-10'),
 			endDate: new Date('2023-06-30'),
 			location: 'Sydney',
 			label: 'Study',
 		},
 		{
-			name: 'Complete Event-Calendar Project',
+			name: 'Update Event-Calendar README',
 			startDate: new Date('2023-06-29'),
 			endDate: new Date('2023-06-30'),
 			location: 'Sydney',
 			label: 'Study',
 		},
+		{
+			name: 'Start Event-Calendar part 3',
+			startDate: new Date('2023-06-17'),
+			endDate: new Date('2023-06-30'),
+			location: 'Sydney',
+			label: 'Study',
+		},
 	]);
+	const [currentMonth, setCurrentMonth] = useState(new Date());
+	const [selectedDate, setSelectedDate] = useState<number | null>(null);
+
+	const month = MonthNames[currentMonth.getMonth()];
+	const year = currentMonth.getFullYear();
+	const days = Array.from(
+		{ length: new Date(year, currentMonth.getMonth() + 1, 0).getDate() },
+		(_, i) => {
+			const day = i + 1;
+			const dayEvents = events.filter(
+				(event) =>
+					event.startDate &&
+					event.startDate instanceof Date &&
+					event.startDate.getFullYear() === year &&
+					event.startDate.getMonth() === currentMonth.getMonth() &&
+					event.startDate.getDate() === day,
+			);
+			return {
+				day,
+				hasEvents: dayEvents.length > 0,
+			};
+		},
+	);
+	const firstDayOfWeek = new Date(year, currentMonth.getMonth(), 0).getDay();
+	const emptyCells = [];
+
+	for (let i = 0; i < firstDayOfWeek; i++) {
+		emptyCells.push(<div key={i}></div>);
+	}
+
+	const handlePrevMonth = () => {
+		setCurrentMonth(
+			new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1),
+		);
+	};
+
+	const handleNextMonth = () => {
+		setCurrentMonth(
+			new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1),
+		);
+	};
 	const [displayForm, setDisplayForm] = useState(false);
 	const [displayEvent, setDisplayEvent] = useState(false);
 
@@ -41,7 +90,8 @@ const Main = () => {
 	useEffect(() => {
 		console.log(events);
 		console.log(showModal);
-	}, [events, showModal]);
+		console.log(days);
+	}, [events, showModal, days]);
 
 	return (
 		<div className='container'>
@@ -51,6 +101,12 @@ const Main = () => {
 				setDisplayForm={setDisplayForm}
 			/>
 			<Calendar
+				emptyCells={emptyCells}
+				handleNextMonth={handleNextMonth}
+				handlePrevMonth={handlePrevMonth}
+				days={days}
+				year={year}
+				month={month}
 				handleAddEvent={handleAddEvent}
 				showModal={showModal}
 				setShowModal={setShowModal}
