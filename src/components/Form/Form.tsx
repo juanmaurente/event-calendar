@@ -7,7 +7,14 @@ interface Props {
 }
 
 const Form: React.FC<Props> = ({ handleAddEvent }) => {
-	const { register, handleSubmit } = useForm();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+		watch,
+	} = useForm<Event>();
+
+	const startDate = watch('startDate');
 
 	const onSubmit = (data: FieldValues) => {
 		const newEvent = {
@@ -42,22 +49,50 @@ const Form: React.FC<Props> = ({ handleAddEvent }) => {
 						Start Date
 					</label>
 					<input
-						{...register('startDate')}
+						{...register('startDate', {
+							validate: (value) => {
+								const currentDate = new Date();
+								const selectedDate = new Date(value);
+								return (
+									selectedDate >= currentDate ||
+									'Start date must be in the future'
+								);
+							},
+						})}
 						id='startDate'
 						type='date'
 						className='form-control custom-date-input'
 					/>
+					{errors.startDate && (
+						<span className='error-message'>
+							{errors.startDate.message}
+						</span>
+					)}
 				</div>
 				<div className='form-field'>
 					<label htmlFor='endDate' className='form-label'>
 						End Date
 					</label>
 					<input
-						{...register('endDate')}
+						{...register('endDate', {
+							validate: (value) => {
+								const selectedDate = new Date(value);
+								const selectedStartDate = new Date(startDate);
+								return (
+									selectedDate >= selectedStartDate ||
+									'End date must be later than start date'
+								);
+							},
+						})}
 						id='endDate'
 						type='date'
 						className='form-control custom-date-input'
 					/>
+					{errors.endDate && (
+						<span className='error-message'>
+							{errors.endDate.message}
+						</span>
+					)}
 				</div>
 				<div className='form-field'>
 					<label htmlFor='location' className='form-label'>
