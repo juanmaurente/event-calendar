@@ -39,7 +39,7 @@ The design goals for this project were to create a simple and intuitive Events C
 
 ## Known Issues
 
--   No known issues at the moment.
+-   When adding new events an orange dot should be displayed at the bottom. This is working only for events set by default but not for new events. the function handleAddEvent should create a new event (its ok), and a new array days with hasEvents attribute should be created (this is not working).
 
 ## Future Goals
 
