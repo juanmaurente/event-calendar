@@ -11,21 +11,7 @@ const Main = () => {
 	const [events, setEvents] = useState<Event[]>([
 		{
 			name: 'Complete Event-Calendar Project',
-			startDate: new Date('2023-06-10'),
-			endDate: new Date('2023-06-30'),
-			location: 'Sydney',
-			label: 'Study',
-		},
-		{
-			name: 'Update Event-Calendar README',
-			startDate: new Date('2023-06-29'),
-			endDate: new Date('2023-06-30'),
-			location: 'Sydney',
-			label: 'Study',
-		},
-		{
-			name: 'Start Event-Calendar part 3',
-			startDate: new Date('2023-06-17'),
+			startDate: new Date('2023-06-30'),
 			endDate: new Date('2023-06-30'),
 			location: 'Sydney',
 			label: 'Study',

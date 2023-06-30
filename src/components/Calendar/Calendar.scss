@@ -1,5 +1,5 @@
 .calendar-container {
-	width: 60%;
+	width: 100%;
 	min-height: 500px;
 	height: 60vh;
 	background-color: #12121f;
@@ -18,4 +18,12 @@
 	letter-spacing: 1px;
 	color: #ffffff5e;
 	padding: 0px 5px;
+}
+
+@media screen and (min-width: 1024px) {
+	.calendar-container {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+	}
 }

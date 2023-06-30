@@ -29,12 +29,14 @@ const EventsList: React.FC<Props> = ({
 					<FontAwesomeIcon icon={faPlus as IconProp} />
 				</button>
 			</div>
-
+			<h3>Upcoming Events</h3>
 			{events.length == 0 ? (
 				<p>No events</p>
 			) : (
 				events.map((event) => (
-					<EventCard key={uuidv4()} event={event} />
+					<>
+						<EventCard key={uuidv4()} event={event} />
+					</>
 				))
 			)}
 		</div>

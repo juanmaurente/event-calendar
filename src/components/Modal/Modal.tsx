@@ -28,7 +28,7 @@ const Modal: React.FC<Props> = ({
 					</button>
 				</div>
 				{displayForm && <Form handleAddEvent={handleAddEvent} />}
-				{displayEvent && <h1>Casi Casi</h1>}
+				{displayEvent && <h1>No events</h1>}
 			</div>
 		</div>
 	);
