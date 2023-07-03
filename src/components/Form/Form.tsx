@@ -19,8 +19,8 @@ const Form: React.FC<Props> = ({ handleAddEvent }) => {
 	const onSubmit = (data: FieldValues) => {
 		const newEvent = {
 			name: data.name,
-			startDate: data.startDate,
-			endDate: data.endDate,
+			startDate: new Date(data.startDate),
+			endDate: new Date(data.endDate),
 			location: data.location,
 			label: data.label,
 		};

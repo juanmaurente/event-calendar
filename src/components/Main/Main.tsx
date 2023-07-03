@@ -18,7 +18,6 @@ const Main = () => {
 		},
 	]);
 	const [currentMonth, setCurrentMonth] = useState(new Date());
-	const [selectedDate, setSelectedDate] = useState<number | null>(null);
 
 	const month = MonthNames[currentMonth.getMonth()];
 	const year = currentMonth.getFullYear();
